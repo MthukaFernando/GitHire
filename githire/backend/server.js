@@ -9,6 +9,7 @@ const authRoutes = require('./routes/auth');
 const projectRoutes = require('./routes/projects');
 const candidateRoutes = require('./routes/candidates');
 const analysisRoutes = require('./routes/analysis');
+const githubRoutes = require('./routes/github');
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use('/api/projects/:projectId/candidates', candidateRoutes);
 app.use('/api/analysis', analysisRoutes);
 app.use('/api/projects/:projectId/candidates', candidateRoutes);
 app.use('/api/projects/:projectId/analysis', analysisRoutes);
+app.use('/api/github', githubRoutes);
 
 app.get('/', (req, res) => {
   res.json({ message: 'GitHire API is running' });

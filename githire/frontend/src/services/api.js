@@ -64,4 +64,8 @@ export const runAnalysis = (projectId) =>
 export const getLatestAnalysis = (projectId) =>
   api.get(`/projects/${projectId}/analysis/latest`);
 
+// Public GitHub (without authentication)
+export const getGithubProfile = (username) =>
+  axios.get(`${import.meta.env.VITE_API_URL}/github/${username}`);
+
 export default api;
