@@ -28,8 +28,7 @@ const Register = () => {
     setLoading(true);
     try {
       await register(email, password);
-      setSuccess('Account created successfully! You can now sign in.');
-      setTimeout(() => navigate('/login'), 2000);
+      setSuccess('Account created! Please check your email to verify your account before signing in.');
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');
     } finally {
