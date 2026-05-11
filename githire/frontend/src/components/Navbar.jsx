@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import logo from '../assets/logo.png';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -33,18 +34,7 @@ const Navbar = () => {
         gap: '10px',
         textDecoration: 'none',
       }}>
-        <div style={{
-          width: '32px',
-          height: '32px',
-          background: 'linear-gradient(135deg, #7c3aed, #3b82f6)',
-          borderRadius: '8px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: '16px',
-        }}>
-          ⚡
-        </div>
+        <img src={logo} alt="GitHire logo" style={{ width: '38px', height: '39px', borderRadius: '8px' }} />
         <span style={{
           fontSize: '18px',
           fontWeight: '700',
@@ -61,7 +51,7 @@ const Navbar = () => {
         alignItems: 'center',
         gap: '16px',
       }}>
-        <span style={{
+        <span className="nav-email" style={{
           fontSize: '14px',
           color: '#94a3b8',
         }}>

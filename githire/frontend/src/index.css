@@ -142,3 +142,10 @@ body::before {
   pointer-events: none;
   z-index: 0;
 }
+
+/* Hiding the email in mobile view */
+@media (max-width: 600px) {
+  .nav-email {
+    display: none;
+  }
+}

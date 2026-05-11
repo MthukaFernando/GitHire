@@ -107,6 +107,8 @@ const Candidate = () => {
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'flex-start',
+              flexWrap: 'wrap',
+              gap: '12px'
             }}>
               <div>
                 <h1 style={{
@@ -147,7 +149,7 @@ const Candidate = () => {
               </a>
             </div>
 
-            <div style={{ display: 'flex', gap: '32px' }}>
+            <div style={{ display: 'flex', gap: '32px', marginTop: '16px', flexWrap: 'wrap' }}>
               {[
                 { label: 'Repositories', value: profile?.public_repos },
                 { label: 'Followers', value: profile?.followers },
@@ -201,7 +203,7 @@ const Candidate = () => {
       </div>
 
       {activeTab === 'overview' && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
           <div className="glass-card" style={{ padding: '24px' }}>
             <h3 style={{ fontSize: '15px', fontWeight: '600', color: '#f8fafc', marginBottom: '20px' }}>
               Language Breakdown

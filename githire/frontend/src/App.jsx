@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard';
 import Project from './pages/Project';
 import Candidate from './pages/Candidate';
 import Navbar from './components/Navbar';
+import Landing from './pages/Landing';
 
 const ProtectedRoute = ({ children }) => {
   const { token, loading } = useAuth();
@@ -28,7 +29,7 @@ const AppRoutes = () => {
     <>
       {token && <Navbar />}
       <Routes>
-        <Route path="/" element={<Navigate to={token ? "/dashboard" : "/login"} />} />
+        <Route path="/" element={token ? <Navigate to="/dashboard" /> : <Landing />} />
         <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
         <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
