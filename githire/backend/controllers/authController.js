@@ -4,10 +4,9 @@ const register = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const { data, error } = await supabase.auth.admin.createUser({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
-      email_confirm: false
     });
 
     if (error) {
@@ -15,7 +14,7 @@ const register = async (req, res) => {
     }
 
     res.status(201).json({
-      message: 'User registered successfully',
+      message: 'User registered successfully. Please check your email to verify your account.',
       user: { id: data.user.id, email: data.user.email }
     });
 
