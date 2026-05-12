@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { getGithubProfile } from '../services/api';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -7,6 +7,7 @@ import {
   BarChart, Bar, XAxis, YAxis
 } from 'recharts';
 import logo from '../assets/logo.png';
+
 
 const COLORS = ['#7c3aed', '#3b82f6', '#a78bfa', '#93c5fd', '#6d28d9', '#1d4ed8', '#c4b5fd', '#bfdbfe'];
 
@@ -18,6 +19,14 @@ const Landing = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const analyserRef = useRef(null);
   const navigate = useNavigate();
+
+
+  useEffect(() => {
+  const hash = window.location.hash;
+  if (hash && hash.includes('type=signup')) {
+    navigate('/login?verified=true');
+  }
+}, []);
 
   const handleAnalyse = async () => {
     if (!githubUrl.trim()) return setError('Please enter a GitHub profile URL');
