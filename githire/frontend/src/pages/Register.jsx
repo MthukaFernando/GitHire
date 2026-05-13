@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import logo from '../assets/logo.png';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -50,19 +51,7 @@ const Register = () => {
       }}>
         {/* Logo */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <div style={{
-            width: '48px',
-            height: '48px',
-            background: 'linear-gradient(135deg, #7c3aed, #3b82f6)',
-            borderRadius: '12px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '24px',
-            margin: '0 auto 16px',
-          }}>
-            ⚡
-          </div>
+          <img src={logo} alt="GitHire logo" style={{ width: '42px', height: '43px', borderRadius: '8px' }} />
           <h1 style={{
             fontSize: '28px',
             fontWeight: '700',
