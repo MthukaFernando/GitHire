@@ -6,6 +6,14 @@
 
 ---
 
+## What is GitHire?
+
+GitHire is a recruitment tool that helps hiring managers evaluate developer candidates based on their public GitHub activity — not just their CV.
+
+Instead of reading through CVs and cover letters, recruiters can paste a candidate's GitHub profile URL and instantly see their language breakdown, repository activity, top projects, and technology usage. For signed-in users, candidates can be organised into hiring projects and ranked against job requirements using AI.
+
+---
+
 ## Tech Stack
 
 **Frontend:** React, Vite, Recharts, React Router  
@@ -18,14 +26,6 @@
 **Deployment:** Vercel (frontend), AWS EC2 (backend)  
 **CI/CD:** GitHub Actions  
 **Email:** Brevo SMTP  
-
----
-
-## What is GitHire?
-
-GitHire is a recruitment tool that helps hiring managers evaluate developer candidates based on their public GitHub activity — not just their CV.
-
-Instead of reading through CVs and cover letters, recruiters can paste a candidate's GitHub profile URL and instantly see their language breakdown, repository activity, top projects, and technology usage. For signed-in users, candidates can be organised into hiring projects and ranked against job requirements using AI.
 
 ---
 
