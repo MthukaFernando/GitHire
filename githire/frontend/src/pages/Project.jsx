@@ -290,11 +290,11 @@ const Project = () => {
               fontSize: '13px',
               marginBottom: '16px',
             }}>
-              Paste the job description or list specific skills and requirements. The AI will use this to rank candidates.
+              Paste the specific technical skill requirements and save them before analysing
             </p>
             <textarea
               className="input"
-              placeholder="e.g. Looking for a React developer with 1+ years experience, Node.js, MongoDB, REST APIs, Git..."
+              placeholder="e.g. Looking for a candidate with React, java, Node.js"
               value={requirements}
               onChange={(e) => setRequirements(e.target.value)}
               rows={10}
