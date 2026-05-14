@@ -191,7 +191,7 @@ const Dashboard = () => {
               <input
                 type="text"
                 className="input"
-                placeholder="e.g. Frontend Intern 2026"
+                placeholder="Enter job title here..."
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
