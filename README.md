@@ -1,16 +1,8 @@
-# GitHire ⚡
+# GitHire 
 
 > AI-powered GitHub recruitment tool — analyse any developer's GitHub profile instantly and rank candidates against your job requirements using AI.
 
 🔗 **Live Demo:** [git-hire-xi.vercel.app](https://git-hire-xi.vercel.app)
-
----
-
-## What is GitHire?
-
-GitHire is a recruitment tool that helps hiring managers evaluate developer candidates based on their public GitHub activity — not just their CV.
-
-Instead of reading through CVs and cover letters, recruiters can paste a candidate's GitHub profile URL and instantly see their language breakdown, repository activity, top projects, and technology usage. For signed-in users, candidates can be organised into hiring projects and ranked against job requirements using AI.
 
 ---
 
@@ -29,6 +21,16 @@ Instead of reading through CVs and cover letters, recruiters can paste a candida
 
 ---
 
+## What is GitHire?
+
+GitHire is a recruitment tool that helps hiring managers evaluate developer candidates based on their public GitHub activity — not just their CV.
+
+Recruiters can paste a candidate's GitHub profile URL and instantly see their language breakdown, repository activity, top projects, and technology usage. For signed-in users, candidates can be organised into hiring projects and ranked against job requirements using AI.
+
+Job seekers and developers can analyse their own GitHub profile by signing up and running their profile against a real job description and discover which skills are missing before they apply.
+
+---
+
 ## Features
 
 ### Free (No Sign Up Required)
@@ -38,7 +40,7 @@ Instead of reading through CVs and cover letters, recruiters can paste a candida
 - See repository activity over the last 12 months
 - View top repositories by stars
 
-### Signed In (Recruiter Features)
+### Signed In (AI Features)
 - Create multiple hiring projects (e.g. "Frontend Intern 2026", "DevOps Engineer")
 - Add candidates to each project via their GitHub URL
 - Live GitHub data fetched on every view — always up to date
