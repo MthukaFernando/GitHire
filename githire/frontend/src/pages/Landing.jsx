@@ -159,22 +159,7 @@ const Landing = () => {
           margin: "0 auto",
         }}
       >
-        <div
-          style={{
-            display: "inline-block",
-            background: "rgba(124, 58, 237, 0.15)",
-            border: "1px solid rgba(124, 58, 237, 0.3)",
-            borderRadius: "20px",
-            padding: "6px 16px",
-            fontSize: "13px",
-            color: "#a78bfa",
-            marginBottom: "24px",
-            fontWeight: "500",
-          }}
-        >
-          AI-Powered GitHub Recruitment
-        </div>
-
+        
         <h1
           style={{
             fontSize: "56px",

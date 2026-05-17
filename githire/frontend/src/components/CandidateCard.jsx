@@ -30,7 +30,7 @@ const CandidateCard = ({ candidate, onRemove, onClick }) => {
         justifyContent: 'space-between',
         alignItems: 'flex-start',
       }}>
-        {/* Left — avatar and info */}
+        {/* Left avatar and info */}
         <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
           {githubData?.profile?.avatar_url ? (
             <img
@@ -151,7 +151,7 @@ const CandidateCard = ({ candidate, onRemove, onClick }) => {
           </div>
         </div>
 
-        {/* Right — remove button */}
+        {/* Right remove button */}
         <button
           onClick={(e) => {
             e.stopPropagation();
