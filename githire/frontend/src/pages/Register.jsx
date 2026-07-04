@@ -29,7 +29,7 @@ const Register = () => {
     setLoading(true);
     try {
       await register(email, password);
-      setSuccess('Account created! Please check your email to verify your account before signing in.');
+      setSuccess('Account created! Please check your inbox/spam to verify your account before signing in.');
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');
     } finally {
