@@ -11,6 +11,7 @@ import {
   getLatestAnalysis
 } from '../services/api';
 import LoadingSpinner from '../components/LoadingSpinner';
+import AnalysisLoading from '../components/AnalysisLoading';
 import CandidateCard from '../components/CandidateCard';
 
 const Project = () => {
@@ -27,13 +28,34 @@ const Project = () => {
   const [analysisLoading, setAnalysisLoading] = useState(false);
   const [githubUrl, setGithubUrl] = useState('');
   const [addingCandidate, setAddingCandidate] = useState(false);
-  const [savingRequirements, setSavingRequirements] = useState(false);
+  const [requirementsSaveStatus, setRequirementsSaveStatus] = useState('saved');
+  const [requirementsSaveError, setRequirementsSaveError] = useState('');
   const [error, setError] = useState('');
   const [activeTab, setActiveTab] = useState('candidates');
 
   useEffect(() => {
     fetchAll();
   }, [id]);
+
+  useEffect(() => {
+    if (loading || requirements === savedRequirements) return;
+
+    const timeoutId = setTimeout(async () => {
+      setRequirementsSaveStatus('saving');
+      try {
+        await saveRequirements(id, requirements);
+        setSavedRequirements(requirements);
+        setRequirementsSaveStatus('saved');
+        setRequirementsSaveError('');
+      } catch (err) {
+        console.error('Failed to save requirements:', err);
+        setRequirementsSaveStatus('error');
+        setRequirementsSaveError('Could not save requirements. Edit the text to try again.');
+      }
+    }, 700);
+
+    return () => clearTimeout(timeoutId);
+  }, [id, loading, requirements, savedRequirements]);
 
   const fetchAll = async () => {
     try {
@@ -99,19 +121,6 @@ const Project = () => {
       setCandidates(candidates.filter(c => c.id !== candidateId));
     } catch (err) {
       console.error('Failed to remove candidate:', err);
-    }
-  };
-
-  const handleSaveRequirements = async () => {
-    if (!requirements.trim()) return;
-    setSavingRequirements(true);
-    try {
-      await saveRequirements(id, requirements);
-      setSavedRequirements(requirements);
-    } catch (err) {
-      console.error('Failed to save requirements:', err);
-    } finally {
-      setSavingRequirements(false);
     }
   };
 
@@ -290,29 +299,42 @@ const Project = () => {
               fontSize: '13px',
               marginBottom: '16px',
             }}>
-              Paste the specific technical skill requirements and save them before analysing
+              Paste the specific technical skill requirements. Your changes save automatically.
             </p>
             <textarea
               className="input"
               placeholder="e.g. Looking for a candidate with React, java, Node.js"
               value={requirements}
-              onChange={(e) => setRequirements(e.target.value)}
+              onChange={(e) => {
+                setRequirements(e.target.value);
+                setRequirementsSaveStatus('pending');
+                setRequirementsSaveError('');
+              }}
               rows={10}
-              style={{ resize: 'vertical', marginBottom: '16px' }}
+              style={{ resize: 'vertical', marginBottom: '8px' }}
             />
-            <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
-              <button
-                className="btn-primary"
-                onClick={handleSaveRequirements}
-                disabled={savingRequirements}
-              >
-                {savingRequirements ? 'Saving...' : 'Save Requirements'}
-              </button>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              minHeight: '24px',
+              marginBottom: '16px',
+            }}>
+              <span style={{
+                color: requirementsSaveStatus === 'error' ? '#fca5a5' : '#94a3b8',
+                fontSize: '13px',
+              }}>
+                {requirementsSaveError || (
+                  requirementsSaveStatus === 'saving' || requirementsSaveStatus === 'pending'
+                    ? 'Saving...'
+                    : 'All changes saved'
+                )}
+              </span>
               {savedRequirements && candidates.length > 0 && (
                 <button
                   className="btn-primary"
                   onClick={handleRunAnalysis}
-                  disabled={analysisLoading}
+                  disabled={analysisLoading || requirementsSaveStatus !== 'saved' || requirements !== savedRequirements}
                   style={{ background: 'linear-gradient(135deg, #7c3aed, #3b82f6)' }}
                 >
                   {analysisLoading ? 'Analysing...' : '⚡ Run AI Analysis'}
@@ -327,7 +349,7 @@ const Project = () => {
       {activeTab === 'analysis' && (
         <div>
           {analysisLoading ? (
-            <LoadingSpinner message="AI is analysing candidates..." />
+            <AnalysisLoading message="AI is analysing candidates..." />
           ) : !analysis ? (
             <div className="glass-card" style={{ padding: '40px', textAlign: 'center' }}>
               <div style={{ fontSize: '40px', marginBottom: '12px' }}>🤖</div>

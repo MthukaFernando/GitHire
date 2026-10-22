@@ -7,17 +7,18 @@ import Project from './pages/Project';
 import Candidate from './pages/Candidate';
 import Navbar from './components/Navbar';
 import Landing from './pages/Landing';
+import LoadingSpinner from './components/LoadingSpinner';
 
 const ProtectedRoute = ({ children }) => {
   const { token, loading } = useAuth();
-  if (loading) return <div style={{ color: 'white', padding: '24px' }}>Loading...</div>;
+  if (loading) return <LoadingSpinner />;
   if (!token) return <Navigate to="/login" />;
   return children;
 };
 
 const PublicRoute = ({ children }) => {
   const { token, loading } = useAuth();
-  if (loading) return <div style={{ color: 'white', padding: '24px' }}>Loading...</div>;
+  if (loading) return <LoadingSpinner />;
   if (token) return <Navigate to="/dashboard" />;
   return children;
 };
