@@ -1,11 +1,14 @@
 const LoadingSpinner = ({ message = 'Loading...' }) => {
   return (
     <div style={{
+      position: 'fixed',
+      inset: 0,
+      zIndex: 99,
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      minHeight: '200px',
+      background: 'var(--bg-primary)',
       gap: '16px',
     }}>
       <div style={{
@@ -19,6 +22,7 @@ const LoadingSpinner = ({ message = 'Loading...' }) => {
       <p style={{
         color: '#94a3b8',
         fontSize: '14px',
+        textAlign: 'center',
       }}>
         {message}
       </p>

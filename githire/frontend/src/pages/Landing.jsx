@@ -15,6 +15,7 @@ import {
   YAxis,
 } from "recharts";
 import logo from "../assets/logo.png";
+import AnimatedContent from "../components/AnimatedContent";
 
 const COLORS = [
   "#7c3aed",
@@ -160,18 +161,27 @@ const Landing = () => {
         }}
       >
         
-        <h1
-          style={{
-            fontSize: "56px",
-            fontWeight: "800",
-            color: "#f8fafc",
-            letterSpacing: "-2px",
-            lineHeight: "1.1",
-            marginBottom: "20px",
-          }}
+        <AnimatedContent
+          distance={80}
+          direction="vertical"
+          duration={1.2}
+          ease="elastic.out(1, 0.6)"
+          threshold={0.1}
+          trigger="mount"
         >
-          Hire smarter with <span>GitHub insights</span>
-        </h1>
+          <h1
+            style={{
+              fontSize: "56px",
+              fontWeight: "800",
+              color: "#f8fafc",
+              letterSpacing: "-2px",
+              lineHeight: "1.1",
+              marginBottom: "20px",
+            }}
+          >
+            Hire smarter with <span>GitHub insights</span>
+          </h1>
+        </AnimatedContent>
 
         <p
           style={{
@@ -217,7 +227,13 @@ const Landing = () => {
       </div>
 
       {/* Features section */}
-      <div
+      <AnimatedContent
+        distance={60}
+        direction="vertical"
+        duration={1}
+        ease="elastic.out(1, 0.6)"
+        threshold={0.2}
+        stagger={0.15}
         style={{
           maxWidth: "1100px",
           margin: "0 auto",
@@ -272,7 +288,7 @@ const Landing = () => {
             </p>
           </div>
         ))}
-      </div>
+      </AnimatedContent>
 
       {/* Analyser section */}
       <div
@@ -301,7 +317,12 @@ const Landing = () => {
         </div>
 
         {/* Input */}
-        <div
+        <AnimatedContent
+          distance={50}
+          direction="vertical"
+          duration={1}
+          ease="elastic.out(1, 0.6)"
+          threshold={0.2}
           className="glass-card"
           style={{ padding: "24px", marginBottom: "24px" }}
         >
@@ -338,7 +359,7 @@ const Landing = () => {
               {loading ? "Analysing..." : "Analyse"}
             </button>
           </div>
-        </div>
+        </AnimatedContent>
 
         {/* Loading */}
         {loading && <LoadingSpinner message="Fetching GitHub profile..." />}
@@ -347,7 +368,12 @@ const Landing = () => {
         {profileData && !loading && (
           <div>
             {/* Profile header */}
-            <div
+            <AnimatedContent
+              distance={40}
+              direction="vertical"
+              duration={1}
+              ease="elastic.out(1, 0.6)"
+              trigger="mount"
               className="glass-card"
               style={{ padding: "28px", marginBottom: "20px" }}
             >
@@ -488,7 +514,7 @@ const Landing = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </AnimatedContent>
 
             {/* Tabs */}
             <div
@@ -528,7 +554,13 @@ const Landing = () => {
 
             {/* Overview tab */}
             {activeTab === "overview" && (
-              <div
+              <AnimatedContent
+                distance={40}
+                direction="vertical"
+                duration={1}
+                ease="elastic.out(1, 0.6)"
+                trigger="mount"
+                stagger={0.1}
                 style={{
                   display: "grid",
                   gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
@@ -684,12 +716,18 @@ const Landing = () => {
                     ))}
                   </div>
                 </div>
-              </div>
+              </AnimatedContent>
             )}
 
             {/* Repositories tab */}
             {activeTab === "repositories" && (
-              <div
+              <AnimatedContent
+                distance={40}
+                direction="vertical"
+                duration={1}
+                ease="elastic.out(1, 0.6)"
+                trigger="mount"
+                stagger={0.05}
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -771,12 +809,20 @@ const Landing = () => {
                     </div>
                   </a>
                 ))}
-              </div>
+              </AnimatedContent>
             )}
 
             {/* Activity tab */}
             {activeTab === "activity" && (
-              <div className="glass-card" style={{ padding: "24px" }}>
+              <AnimatedContent
+                distance={40}
+                direction="vertical"
+                duration={1}
+                ease="elastic.out(1, 0.6)"
+                trigger="mount"
+                className="glass-card"
+                style={{ padding: "24px" }}
+              >
                 <h3
                   style={{
                     fontSize: "15px",
@@ -823,11 +869,17 @@ const Landing = () => {
                     No activity data available
                   </p>
                 )}
-              </div>
+              </AnimatedContent>
             )}
 
             {/* CTA Banner */}
-            <div
+            <AnimatedContent
+              distance={40}
+              direction="vertical"
+              duration={1}
+              ease="elastic.out(1, 0.6)"
+              trigger="mount"
+              delay={0.2}
               style={{
                 marginTop: "28px",
                 padding: "28px",
@@ -871,7 +923,7 @@ const Landing = () => {
               >
                 Sign up for AI Matching →
               </button>
-            </div>
+            </AnimatedContent>
           </div>
         )}
       </div>
